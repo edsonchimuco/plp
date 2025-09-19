@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Programação de Alto Impacto — Unificado</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    :root{--green:#00ff9d;--dark-900:#0b0b0b;--glass:rgba(255,255,255,0.04)}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; background:#070707; color:#f8fafc}
+    .electric-green{color:var(--green)}
+    .bg-electric-green{background:var(--green)}
+    .glass{background:var(--glass); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.04)}
+    /* Carousel styles */
+    .carousel-slide{min-width:100%; transition:transform .45s ease}
+    .carousel-track{display:flex}
+  </style>
+</head>
+<body class="antialiased">
+    <div id="topMessageBar" class="hidden fixed top-0 left-0 w-full bg-electric-green text-black text-center p-3 z-50 transition-transform duration-300 transform -translate-y-full">
+      <p id="topMessageText">Esta é uma mensagem de teste!</p>
+    </div>
+  <header class="py-6 px-6 border-b border-gray-800 sticky top-0 bg-gray-900/50 backdrop-blur-lg z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-electric-green">
+          <img src="./assets/images/4x4.1.svg" alt="edsonchimuco">
+        </div>
+        <div>
+          <div class="text-lg font-bold electric-green">Programa de Alto Impacto</div>
+          <div class="text-xs text-gray-400">Edson Chimuco</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-8 text-gray-300">
+        <a href="#about">Sobre</a>
+        <a href="#modules">Pilares</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <button id="openWaitlist" class="bg-electric-green text-black px-4 py-2 rounded-full font-semibold">Lista de Espera</button>
+        <button id="openChat" class="bg-gray-800 text-white px-4 py-2 rounded-full">Chat</button>
+      </div>
+      <div class="md:hidden">
+        <button id="mobileMenuBtn">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden mt-4">
+      <nav class="flex flex-col gap-4 text-gray-300 text-center">
+        <a href="#about">Sobre</a>
+        <a href="#modules">Pilares</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#faq">FAQ</a>
+        <div class="flex flex-col gap-3 mt-4">
+          <button id="openWaitlistMobile" class="bg-electric-green text-black px-4 py-2 rounded-full font-semibold">Lista de Espera</button>
+          <button id="openChatMobile" class="bg-gray-800 text-white px-4 py-2 rounded-full">Chat</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="min-h-[60vh] flex items-center">
+    <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
+    <div class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10">
+      <div class="md:w-1/2" data-aos="fade-right">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Programação de <span class="electric-green">Alto Impacto</span></h1>
+        <p class="mt-4 text-gray-300 max-w-xl">Transforme lógica em projetos reais. Curso intensivo com mentoria, desafios práticos e certificação.</p>
+
+        <div class="mt-8 flex gap-4">
+          <button id="heroJoin" class="bg-electric-green text-black px-6 py-3 rounded-full font-bold">Entrar na Lista de Espera</button>
+          <a href="#modules" class="border border-gray-700 px-6 py-3 rounded-full text-gray-300">Ver Pilares</a>
+        </div>
+      </div>
+
+      <div class="md:w-1/2" data-aos="fade-left">
+        <div class="glass p-6 rounded-xl max-w-md mx-auto">
+          <h3 class="font-bold text-lg mb-2">Inscreva-se na Lista de Espera</h3>
+          <form id="waitlistForm" class="space-y-3">
+            <input name="nome" required placeholder="Nome completo*" class="w-full px-3 py-2 rounded bg-gray-800" />
+            <input name="email" type="email" required placeholder="Email*" class="w-full px-3 py-2 rounded bg-gray-800" />
+            <input name="telefone" placeholder="WhatsApp (ex: +244...)" class="w-full px-3 py-2 rounded bg-gray-800" />
+            <select name="nivel" class="w-full px-3 py-2 rounded bg-gray-800">
+              <option value="">Nível de conhecimento</option>
+              <option>Iniciante</option>
+              <option>Básico</option>
+              <option>Intermediário</option>
+              <option>Avançado</option>
+            </select>
+            <div class="flex gap-2">
+              <button type="submit" class="flex-1 bg-electric-green text-black px-4 py-2 rounded">Confirmar Inscrição</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modules" class="py-16 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center">Pilares do Programa</h2>
+      <p class="text-center text-gray-400 mt-3 max-w-2xl mx-auto">A nossa missão para transformar o cenário da programação em Angola.</p>
+      <div class="grid md:grid-cols-4 gap-6 mt-8">
+        <div class="glass p-6 rounded-xl text-center">
+          <i data-feather="shield-off" class="w-10 h-10 text-electric-green mx-auto"></i>
+          <h3 class="font-semibold mt-4">Quebrar Mitos e Mimos</h3>
+          <p class="text-gray-300 text-sm mt-2">Desmistificar a programação e focar no que realmente importa: a prática.</p>
+        </div>
+        <div class="glass p-6 rounded-xl text-center">
+          <i data-feather="award" class="w-10 h-10 text-electric-green mx-auto"></i>
+          <h3 class="font-semibold mt-4">Desenvolver Especialidade</h3>
+           <p class="text-gray-300 text-sm mt-2">Capacitar programadores com conhecimento profundo e especializado.</p>
+        </div>
+        <div class="glass p-6 rounded-xl text-center">
+          <i data-feather="users" class="w-10 h-10 text-electric-green mx-auto"></i>
+          <h3 class="font-semibold mt-4">Desenvolver Comunidade</h3>
+           <p class="text-gray-300 text-sm mt-2">Criar uma comunidade forte, colaborativa e inovadora em Angola.</p>
+        </div>
+        <div class="glass p-6 rounded-xl text-center">
+          <i data-feather="globe" class="w-10 h-10 text-electric-green mx-auto"></i>
+          <h3 class="font-semibold mt-4">Desenvolver Ecossistema</h3>
+           <p class="text-gray-300 text-sm mt-2">Fomentar o primeiro ecossistema de programação sustentável no país.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-6">Galeria</h2>
+      <div class="relative max-w-4xl mx-auto">
+        <div class="overflow-hidden rounded-xl bg-black">
+          <div id="carouselTrack" class="carousel-track">
+            <div class="carousel-slide"><img src="./assets/images/capa.jpg" alt="Programação de Alto Impacto" class="w-full h-auto"></div>
+            <div class="carousel-slide"><img src="./assets/images/sld1.jpg" alt="Quebrar mitos e mimos" class="w-full h-auto"></div>
+            <div class="carousel-slide"><img src="./assets/images/sld2.jpg" alt="Desenvolver especialidade" class="w-full h-auto"></div>
+            <div class="carousel-slide"><img src="./assets/images/sld3.jpg" alt="Desenvolver comunidade" class="w-full h-auto"></div>
+            <div class="carousel-slide"><img src="./assets/images/sld4.jpg" alt="Desenvolver ecossistema" class="w-full h-auto"></div>
+            <div class="carousel-slide"><img src="./assets/images/sld2.1.jpg" alt="Especialidade em programação" class="w-full h-auto"></div>
+            <div class="carousel-slide"><img src="./assets/images/sld3.1.jpg" alt="Comunidade de programação" class="w-full h-auto"></div>
+          </div>
+        </div>
+        <div class="flex justify-between mt-4 items-center">
+          <div class="flex gap-2">
+            <button id="prevSlide" class="px-3 py-2 bg-gray-800 rounded">◀</button>
+            <button id="nextSlide" class="px-3 py-2 bg-gray-800 rounded">▶</button>
+          </div>
+          <div id="dots" class="flex gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos" class="py-16 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center">Conheça o Programa</h2>
+      <p class="text-center text-gray-400 mt-3 max-w-2xl mx-auto">Veja em detalhe como o curso vai transformar a sua carreira.</p>
+      
+      <div class="grid md:grid-cols-2 gap-8 mt-12">
+        <div class="glass p-4 rounded-xl">
+          <div class="aspect-w-16 aspect-h-9">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-lg"></iframe>
+          </div>
+          <h3 class="font-semibold mt-4">Pilar 1: Quebrando Mitos</h3>
+          <p class="text-gray-300 text-sm mt-1">Entenda a nossa metodologia prática e direta.</p>
+        </div>
+
+        <div class="glass p-4 rounded-xl">
+          <div class="aspect-w-16 aspect-h-9">
+             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-lg"></iframe>
+          </div>
+          <h3 class="font-semibold mt-4">Pilar 2: Comunidade e Ecossistema</h3>
+          <p class="text-gray-300 text-sm mt-1">Veja como o networking e os projetos reais funcionam.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-16 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold">Perguntas Frequentes</h3>
+        <div class="mt-6 space-y-4">
+          <details class="glass p-4 rounded"><summary class="font-semibold">Quanto tempo dura o curso?</summary><p class="mt-2 text-gray-300">A duração oficial será anunciada 10 dias antes do lançamento. Será um programa intensivo com projetos práticos.</p></details>
+          <details class="glass p-4 rounded"><summary class="font-semibold">Preciso ter experiência?</summary><p class="mt-2 text-gray-300">Não. O curso foi desenhado para atender todos os níveis, do iniciante ao avançado.</p></details>
+          <details class="glass p-4 rounded"><summary class="font-semibold">Como funciona a lista de espera?</summary><p class="mt-2 text-gray-300">Ao inscrever-se, receberá em primeira mão a data de lançamento, ofertas especiais e terá prioridade nas vagas.</p></details>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold">Depoimentos</h3>
+        <div class="mt-6 space-y-4">
+          <div class="glass p-4 rounded"><strong>João Silva</strong><p class="text-gray-300">"Um programa que promete revolucionar a forma como aprendemos a programar em Angola. Ansioso pelo lançamento!"</p></div>
+          <div class="glass p-4 rounded"><strong>Maria Fernandes</strong><p class="text-gray-300">"A abordagem prática e focada em criar um ecossistema é exatamente o que precisamos. Já estou na lista de espera!"</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 text-gray-400">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div>
+          <h4 class="font-bold electric-green">Programa de Alto Impacto</h4>
+          <p class="text-sm">Transformando Angola através do conhecimento em programação.</p>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <p class="text-sm">contato@altoimpacto.ao • +244 123 456 789</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <div id="leadModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+    <div class="glass p-8 rounded-xl max-w-md w-full relative" data-aos="fade-up">
+      <button id="closeLeadModal" class="absolute top-4 right-4 text-gray-400">✕</button>
+      <h3 class="font-bold text-2xl electric-green">Antes de ir...</h3>
+      <p class="text-gray-300 mt-2">Parece que não encontrou o que procurava. Deixe o seu contacto e um especialista da nossa equipa irá tirar todas as suas dúvidas, sem compromisso!</p>
+      <form id="leadForm" class="space-y-3 mt-6">
+        <input name="contacto" required placeholder="O seu WhatsApp ou Email*" class="w-full px-3 py-2 rounded bg-gray-800" />
+        <textarea name="duvida" placeholder="Qual é a sua principal dúvida? (Opcional)" rows="2" class="w-full px-3 py-2 rounded bg-gray-800"></textarea>
+        <button type="submit" class="w-full bg-electric-green text-black px-4 py-2 rounded font-bold">Quero Receber Ajuda</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="chatModal" class="fixed bottom-6 right-6 z-50 w-full max-w-md hidden">
+    <div class="glass rounded-t-lg overflow-hidden shadow-xl">
+      <div class="flex items-center justify-between px-4 py-3 bg-gray-800">
+        <strong>Qualificação — Assistente</strong>
+        <button id="closeChat" class="px-2 py-1 text-gray-300">✕</button>
+      </div>
+      <div id="chatBody" class="p-4 max-h-72 overflow-y-auto">
+        <div class="text-gray-300">Olá! Vamos fazer algumas perguntas rápidas para qualificar a sua candidatura.</div>
+      </div>
+      <div class="p-3 border-t border-gray-700 bg-gray-900">
+        <div id="chatOptions" class="grid grid-cols-2 gap-2 mb-2 hidden"></div>
+        <div id="chatInputWrap" class="flex gap-2">
+          <input id="chatInput" type="text" placeholder="Digite aqui..." class="flex-1 px-3 py-2 rounded bg-gray-800" />
+          <button id="chatSend" class="px-3 py-2 bg-electric-green text-black rounded">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <script src="./assets/js/main.js"></script>
+</body>
+</html>
