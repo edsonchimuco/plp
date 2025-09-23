@@ -1,0 +1,11 @@
+/* Ficheiro: /components/header/header.css */
+
+header {
+    /*
+      Esta transição é a chave para o movimento suave do header
+      quando a barra de contagem no topo desaparece.
+      Ela anima a propriedade 'top' durante 0.5 segundos com um
+      efeito de aceleração e desaceleração suave (ease-in-out).
+    */
+    transition: top 0.5s ease-in-out;
+}

@@ -57,7 +57,7 @@ window.addEventListener('load', () => {
    ------------------------------- */
 const waitlistForm = document.getElementById('waitlistForm');
 // !! IMPORTANTE: Verifique se este URL é o URL da SUA implementação do Apps Script !!
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzlwM1sE-kOLPJ-AFSTihNhoLRN_52HFuMTSuqjHNWa0Jdh7DBuImSefKdViwMwVDREHA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhTzlwqtKphxxWxeP0qGiNCXEN8-5pQCZWP8Y5RUu3H-UWVKWIQrmLunVNjMpdTkEBPA/exec";
 
 waitlistForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -193,7 +193,7 @@ document.getElementById('openChatMobile').addEventListener('click', () => openCh
     const closeLeadModal = document.getElementById('closeLeadModal');
     const leadForm = document.getElementById('leadForm');
     // !! IMPORTANTE: Este será um NOVO URL para uma NOVA função no seu Apps Script !!
-    const LEAD_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzlwM1sE-kOLPJ-AFSTihNhoLRN_52HFuMTSuqjHNWa0Jdh7DBuImSefKdViwMwVDREHA/exec"; 
+    const LEAD_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhTzlwqtKphxxWxeP0qGiNCXEN8-5pQCZWP8Y5RUu3H-UWVKWIQrmLunVNjMpdTkEBPA/exec"; 
 
     // Mostrar o modal na intenção de saída
     document.addEventListener('mouseout', (e) => {
@@ -217,3 +217,27 @@ document.getElementById('openChatMobile').addEventListener('click', () => openCh
         leadForm.reset();
         setTimeout(() => leadModal.classList.add('hidden'), 500);
     });
+
+
+    // Funcoa para buscar o conteudo dinamicamente
+      const CONTENT_URL = "https://script.google.com/macros/s/AKfycbzhTzlwqtKphxxWxeP0qGiNCXEN8-5pQCZWP8Y5RUu3H-UWVKWIQrmLunVNjMpdTkEBPA/exec";
+
+    async function loadDynamicContent() {
+      try {
+        const response = await fetch(CONTENT_URL);
+        const content = await response.json();
+
+        // Itera sobre o conteúdo e preenche os elementos
+        for (const id in content) {
+          const element = document.getElementById(id);
+          if (element) {
+            element.textContent = content[id];
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao carregar conteúdo dinâmico:", error);
+      }
+    }
+
+    // Chamar a função quando a página carregar
+    document.addEventListener('DOMContentLoaded', loadDynamicContent);

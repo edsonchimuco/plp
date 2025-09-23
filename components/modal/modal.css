@@ -1,0 +1,99 @@
+/* Ficheiro: /components/modal/modal.css */
+
+/* --- Estilos Gerais do Overlay (usado pelo Iframe e Lead Modal) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Estilos do Modal de Conteúdo (Iframe) --- */
+.modal-content {
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    height: 80vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-content iframe {
+    flex-grow: 1;
+    border: none;
+    border-radius: 8px;
+    background: #fff; /* Fundo branco para as políticas/termos */
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: var(--green);
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+}
+
+/* --- Estilos Específicos do Chat de Qualificação --- */
+/* Estilo para as mensagens do bot */
+.chat-message-bot {
+    background-color: #374151; /* bg-gray-700 */
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    max-width: 80%;
+    align-self: flex-start;
+    text-align: left;
+}
+
+/* Estilo para as mensagens do utilizador */
+.chat-message-user {
+    background-color: var(--green);
+    color: black;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    max-width: 80%;
+    align-self: flex-end;
+    text-align: left;
+}
+
+#chatBody {
+    display: flex;
+    flex-direction: column;
+}

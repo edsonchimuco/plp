@@ -1,256 +1,428 @@
 <!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Programação de Alto Impacto — Unificado</title>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+<html lang="pt-BR" class="scroll-smooth">
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    :root{--green:#00ff9d;--dark-900:#0b0b0b;--glass:rgba(255,255,255,0.04)}
-    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; background:#070707; color:#f8fafc}
-    .electric-green{color:var(--green)}
-    .bg-electric-green{background:var(--green)}
-    .glass{background:var(--glass); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.04)}
-    /* Carousel styles */
-    .carousel-slide{min-width:100%; transition:transform .45s ease}
-    .carousel-track{display:flex}
-  </style>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <title>Programa de Alto Impacto | Curso de Programação em Angola</title>
+
+    <meta name="description" content="Transforme a sua lógica em projetos reais com o Programa de Alto Impacto. Um curso de programação intensivo em Angola, com mentoria, desafios práticos e certificação.">
+
+    <meta name="keywords" content="curso de programação angola, aprender a programar luanda, programação de alto impacto, edson chimuco, desenvolvimento web angola, curso de lógica de programação">
+    
+    <meta name="author" content="Edson Chimuco">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://edsonchimuco.github.io/mys/plp/">
+
+    <link rel="icon" href="./assets/images/icon.svg" type="image/svg+xml">
+
+    <meta property="og:title" content="Programa de Alto Impacto | Curso de Programação em Angola">
+    <meta property="og:description" content="Transforme a sua lógica em projetos reais com o Programa de Alto Impacto. Um curso intensivo com mentoria, desafios práticos e certificação.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://edsonchimuco.github.io/mys/plp/">
+    <meta property="og:image" content="https://edsonchimuco.github.io/mys/plp/assets/images/social-share.png">
+    <meta property="og:site_name" content="Programa de Alto Impacto">
+    <meta property="og:locale" content="pt_AO">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Programa de Alto Impacto | Curso de Programação em Angola">
+    <meta name="twitter:description" content="Transforme a sua lógica em projetos reais com o Programa de Alto Impacto.">
+    <meta name="twitter:image" content="https://edsonchimuco.github.io/mys/plp/assets/images/social-share.png">
+    <meta name="twitter:creator" content="@seu_twitter_aqui">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Programa de Alto Impacto",
+      "description": "Um curso intensivo de programação em Angola focado em transformar lógica em projetos reais através de mentoria e desafios práticos.",
+      "provider": {
+        "@type": "Person",
+        "name": "Edson Chimuco"
+      }
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.140.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./components/header/header.css">
+    <link rel="stylesheet" href="./components/modal/modal.css">
+    <link rel="stylesheet" href="./components/preloader/preloader.css">
 </head>
+
 <body class="antialiased">
-    <div id="topMessageBar" class="hidden fixed top-0 left-0 w-full bg-electric-green text-black text-center p-3 z-50 transition-transform duration-300 transform -translate-y-full">
-      <p id="topMessageText">Esta é uma mensagem de teste!</p>
+   <div id="preloader" class="fixed inset-0 bg-[#070707] flex items-center justify-center z-[200]">
+        <div class="preloader-logo w-24 h-24 rounded-full p-2">
+            <img src="./assets/images/logo.svg" alt="Logo Carregando...">
+        </div>
     </div>
-  <header class="py-6 px-6 border-b border-gray-800 sticky top-0 bg-gray-900/50 backdrop-blur-lg z-50">
+
+  <div id="topMessageBar"
+    class="fixed top-0 left-0 w-full bg-electric-green text-black text-center p-3 z-50 transition-transform duration-500 transform">
+    <p id="topMessageText">Carregando data do inicio evento...</p>
+  </div>
+
+  <header class="py-4 px-6 border-b border-gray-800 sticky top-12 bg-gray-900/50 backdrop-blur-lg z-40">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="w-10 h-10 rounded-full bg-electric-green">
-          <img src="./assets/images/4x4.1.svg" alt="edsonchimuco">
+      <a href="#" class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-electric-green flex-shrink-0 p-1">
+          <img src="./assets/images/4x4.1.svg" alt="Perfil Edson Chimuco"
+            class="rounded-full w-full h-full object-cover">
         </div>
-        <div>
-          <div class="text-lg font-bold electric-green">Programa de Alto Impacto</div>
-          <div class="text-xs text-gray-400">Edson Chimuco</div>
+        <div class="min-w-0">
+          <div class="text-base md:text-lg font-bold electric-green truncate">Programa de Alto Impacto</div>
+          <div class="text-xs text-gray-400">Por Edson Chimuco</div>
         </div>
-      </div>
-      <nav class="hidden md:flex gap-8 text-gray-300">
-        <a href="#about">Sobre</a>
-        <a href="#modules">Pilares</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#faq">FAQ</a>
+      </a>
+      <nav class="hidden lg:flex items-center gap-8 text-gray-300">
+        <a href="#modules" class="hover:text-electric-green transition-colors">Pilares</a>
+        <a href="#author" class="hover:text-electric-green transition-colors">O Autor</a>
+        <a href="#galeria" class="hover:text-electric-green transition-colors">Galeria</a>
+        <a href="#faq" class="hover:text-electric-green transition-colors">FAQ</a>
       </nav>
-      <div class="hidden md:flex items-center gap-3">
-        <button id="openWaitlist" class="bg-electric-green text-black px-4 py-2 rounded-full font-semibold">Lista de Espera</button>
-        <button id="openChat" class="bg-gray-800 text-white px-4 py-2 rounded-full">Chat</button>
+      <div class="hidden lg:flex">
+        <a href="#form-section"
+          class="bg-electric-green text-black px-5 py-2 rounded-full font-semibold hover:opacity-90 transition-opacity">Inscrever-se</a>
       </div>
-      <div class="md:hidden">
-        <button id="mobileMenuBtn">
-          <i data-feather="menu" class="w-6 h-6"></i>
+      <div class="lg:hidden">
+        <button id="mobileMenuBtn" aria-label="Abrir menu">
+          <i data-feather="menu" class="w-7 h-7"></i>
         </button>
       </div>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden mt-4">
-      <nav class="flex flex-col gap-4 text-gray-300 text-center">
-        <a href="#about">Sobre</a>
-        <a href="#modules">Pilares</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#faq">FAQ</a>
-        <div class="flex flex-col gap-3 mt-4">
-          <button id="openWaitlistMobile" class="bg-electric-green text-black px-4 py-2 rounded-full font-semibold">Lista de Espera</button>
-          <button id="openChatMobile" class="bg-gray-800 text-white px-4 py-2 rounded-full">Chat</button>
+    <div id="mobileMenu" class="hidden lg:hidden mt-4 border-t border-gray-800">
+    <nav class="flex flex-col text-gray-300 text-center">
+        <a href="#modules" class="block py-4 border-b border-gray-700 hover:bg-gray-800 transition-colors">Pilares</a>
+        <a href="#author" class="block py-4 border-b border-gray-700 hover:bg-gray-800 transition-colors">O Autor</a>
+        <a href="#galeria" class="block py-4 border-b border-gray-700 hover:bg-gray-800 transition-colors">Galeria</a>
+        <a href="#faq" class="block py-4 hover:bg-gray-800 transition-colors">FAQ</a>
+        
+        <div class="p-4">
+            <a href="#form-section" class="bg-electric-green text-black px-6 py-3 rounded-full font-semibold inline-block w-full hover:opacity-90 transition-opacity">Inscrever-se</a>
         </div>
-      </nav>
+    </nav>
     </div>
   </header>
 
-  <section id="hero" class="min-h-[60vh] flex items-center">
-    <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
-    <div class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10">
-      <div class="md:w-1/2" data-aos="fade-right">
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Programação de <span class="electric-green">Alto Impacto</span></h1>
-        <p class="mt-4 text-gray-300 max-w-xl">Transforme lógica em projetos reais. Curso intensivo com mentoria, desafios práticos e certificação.</p>
+  <main>
 
-        <div class="mt-8 flex gap-4">
-          <button id="heroJoin" class="bg-electric-green text-black px-6 py-3 rounded-full font-bold">Entrar na Lista de Espera</button>
-          <a href="#modules" class="border border-gray-700 px-6 py-3 rounded-full text-gray-300">Ver Pilares</a>
+    <section id="hero" class="relative min-h-[80vh] flex items-center pt-20">
+      <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
+      <div class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12">
+        <div class="md:w-1/2 text-center md:text-left reveal">
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Programação de <span class="electric-green">Alto
+              Impacto</span></h1>
+          <p id="hero-subtitle" class="mt-4 text-gray-300 max-w-xl mx-auto md:mx-0">Carregando descrição...</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a href="#form-section"
+              class="bg-electric-green text-black px-8 py-3 rounded-full font-bold hover:opacity-90 transition-opacity">Garantir
+              Minha Vaga</a>
+            <a href="#manual-download" id="manual-download-hero-btn"
+              class="border border-gray-700 px-8 py-3 rounded-full text-gray-300 hover:bg-gray-800 transition-colors">Baixar
+              o Manual</a>
+          </div>
+        </div>
+        <div id="form-section" class="md:w-1/2 w-full reveal">
+          <div class="glass p-6 rounded-xl max-w-md mx-auto">
+            <h3 class="font-bold text-lg text-center mb-4">Acesso Prioritário: Entre na Lista de Espera</h3>
+            <form id="waitlistForm" class="space-y-4">
+              <input name="nome" required placeholder="Nome completo*"
+                class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700 focus:border-electric-green focus:ring-0 outline-none transition-colors" />
+              <input name="email" type="email" required placeholder="O seu melhor Email*"
+                class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700 focus:border-electric-green focus:ring-0 outline-none transition-colors" />
+              <input name="telefone" placeholder="WhatsApp (Opcional)"
+                class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700 focus:border-electric-green focus:ring-0 outline-none transition-colors" />
+              <select name="nivel"
+                class="w-full px-4 py-3 rounded bg-gray-800 border border-gray-700 focus:border-electric-green focus:ring-0 outline-none transition-colors">
+                <option value="">Qual o seu nível de conhecimento?</option>
+                <option>Iniciante (nunca programei)</option>
+                <option>Básico (sei a lógica)</option>
+                <option>Intermediário (já criei projetos)</option>
+                <option>Avançado (trabalho na área)</option>
+              </select>
+              <button type="submit"
+                class="w-full bg-electric-green text-black px-4 py-3 rounded font-bold hover:opacity-90 transition-opacity">Confirmar
+                Inscrição</button>
+            </form>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="md:w-1/2" data-aos="fade-left">
-        <div class="glass p-6 rounded-xl max-w-md mx-auto">
-          <h3 class="font-bold text-lg mb-2">Inscreva-se na Lista de Espera</h3>
-          <form id="waitlistForm" class="space-y-3">
-            <input name="nome" required placeholder="Nome completo*" class="w-full px-3 py-2 rounded bg-gray-800" />
-            <input name="email" type="email" required placeholder="Email*" class="w-full px-3 py-2 rounded bg-gray-800" />
-            <input name="telefone" placeholder="WhatsApp (ex: +244...)" class="w-full px-3 py-2 rounded bg-gray-800" />
-            <select name="nivel" class="w-full px-3 py-2 rounded bg-gray-800">
-              <option value="">Nível de conhecimento</option>
-              <option>Iniciante</option>
-              <option>Básico</option>
-              <option>Intermediário</option>
-              <option>Avançado</option>
-            </select>
-            <div class="flex gap-2">
-              <button type="submit" class="flex-1 bg-electric-green text-black px-4 py-2 rounded">Confirmar Inscrição</button>
+    <section id="modules" class="py-20 border-t border-gray-800 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center">Os 4 Pilares da Transformação</h2>
+        <p class="text-center text-gray-400 mt-3 max-w-2xl mx-auto">A nossa missão para revolucionar o cenário da
+          programação em Angola.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+          <div class="glass p-6 rounded-xl text-center"><i data-feather="shield-off"
+              class="w-10 h-10 text-electric-green mx-auto"></i>
+            <h3 class="font-semibold mt-4">Quebrar Mitos</h3>
+            <p class="text-gray-300 text-sm mt-2">Desmistificar a programação e focar no que realmente importa: a
+              prática e resultados.</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center"><i data-feather="award"
+              class="w-10 h-10 text-electric-green mx-auto"></i>
+            <h3 class="font-semibold mt-4">Desenvolver Especialidade</h3>
+            <p class="text-gray-300 text-sm mt-2">Capacitar programadores com conhecimento profundo e especializado para
+              o mercado.</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center"><i data-feather="users"
+              class="w-10 h-10 text-electric-green mx-auto"></i>
+            <h3 class="font-semibold mt-4">Criar Comunidade</h3>
+            <p class="text-gray-300 text-sm mt-2">Formar uma comunidade forte, colaborativa e inovadora para partilha e
+              crescimento.</p>
+          </div>
+          <div class="glass p-6 rounded-xl text-center"><i data-feather="globe"
+              class="w-10 h-10 text-electric-green mx-auto"></i>
+            <h3 class="font-semibold mt-4">Fomentar Ecossistema</h3>
+            <p class="text-gray-300 text-sm mt-2">Plantar a semente para o primeiro ecossistema de programação
+              sustentável no país.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="py-20 border-t border-gray-800 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Galeria de Imagens</h2>
+        <div id="carousel-container" class="relative max-w-5xl mx-auto">
+          <div class="overflow-hidden rounded-xl bg-black">
+            <div id="carouselTrack" class="carousel-track flex flex-nowrap">
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/capa.jpg" alt="Programação de Alto Impacto"
+                  class="w-full h-auto object-cover">
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/sld1.jpg" alt="Quebrar mitos e mimos" class="w-full h-auto object-cover">
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/sld2.jpg" alt="Desenvolver especialidade" class="w-full h-auto object-cover">
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/sld3.jpg" alt="Desenvolver comunidade" class="w-full h-auto object-cover">
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/sld4.jpg" alt="Desenvolver ecossistema" class="w-full h-auto object-cover">
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/sld2.1.jpg" alt="Especialidade em programação"
+                  class="w-full h-auto object-cover">
+              </div>
+              <div class="carousel-slide w-full flex-shrink-0">
+                <img src="./assets/images/sld3.1.jpg" alt="Comunidade de programação"
+                  class="w-full h-auto object-cover">
+              </div>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="modules" class="py-16 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center">Pilares do Programa</h2>
-      <p class="text-center text-gray-400 mt-3 max-w-2xl mx-auto">A nossa missão para transformar o cenário da programação em Angola.</p>
-      <div class="grid md:grid-cols-4 gap-6 mt-8">
-        <div class="glass p-6 rounded-xl text-center">
-          <i data-feather="shield-off" class="w-10 h-10 text-electric-green mx-auto"></i>
-          <h3 class="font-semibold mt-4">Quebrar Mitos e Mimos</h3>
-          <p class="text-gray-300 text-sm mt-2">Desmistificar a programação e focar no que realmente importa: a prática.</p>
-        </div>
-        <div class="glass p-6 rounded-xl text-center">
-          <i data-feather="award" class="w-10 h-10 text-electric-green mx-auto"></i>
-          <h3 class="font-semibold mt-4">Desenvolver Especialidade</h3>
-           <p class="text-gray-300 text-sm mt-2">Capacitar programadores com conhecimento profundo e especializado.</p>
-        </div>
-        <div class="glass p-6 rounded-xl text-center">
-          <i data-feather="users" class="w-10 h-10 text-electric-green mx-auto"></i>
-          <h3 class="font-semibold mt-4">Desenvolver Comunidade</h3>
-           <p class="text-gray-300 text-sm mt-2">Criar uma comunidade forte, colaborativa e inovadora em Angola.</p>
-        </div>
-        <div class="glass p-6 rounded-xl text-center">
-          <i data-feather="globe" class="w-10 h-10 text-electric-green mx-auto"></i>
-          <h3 class="font-semibold mt-4">Desenvolver Ecossistema</h3>
-           <p class="text-gray-300 text-sm mt-2">Fomentar o primeiro ecossistema de programação sustentável no país.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="galeria" class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-6">Galeria</h2>
-      <div class="relative max-w-4xl mx-auto">
-        <div class="overflow-hidden rounded-xl bg-black">
-          <div id="carouselTrack" class="carousel-track">
-            <div class="carousel-slide"><img src="./assets/images/capa.jpg" alt="Programação de Alto Impacto" class="w-full h-auto"></div>
-            <div class="carousel-slide"><img src="./assets/images/sld1.jpg" alt="Quebrar mitos e mimos" class="w-full h-auto"></div>
-            <div class="carousel-slide"><img src="./assets/images/sld2.jpg" alt="Desenvolver especialidade" class="w-full h-auto"></div>
-            <div class="carousel-slide"><img src="./assets/images/sld3.jpg" alt="Desenvolver comunidade" class="w-full h-auto"></div>
-            <div class="carousel-slide"><img src="./assets/images/sld4.jpg" alt="Desenvolver ecossistema" class="w-full h-auto"></div>
-            <div class="carousel-slide"><img src="./assets/images/sld2.1.jpg" alt="Especialidade em programação" class="w-full h-auto"></div>
-            <div class="carousel-slide"><img src="./assets/images/sld3.1.jpg" alt="Comunidade de programação" class="w-full h-auto"></div>
+          </div>
+          <div class="flex justify-between mt-6 items-center">
+            <div class="flex gap-3">
+              <button id="prevSlide" aria-label="Slide anterior"
+                class="px-4 py-2 bg-gray-800 rounded hover:bg-electric-green hover:text-black transition-colors">◀</button>
+              <button id="nextSlide" aria-label="Próximo slide"
+                class="px-4 py-2 bg-gray-800 rounded hover:bg-electric-green hover:text-black transition-colors">▶</button>
+            </div>
+            <div id="dots" class="flex gap-2"></div>
           </div>
         </div>
-        <div class="flex justify-between mt-4 items-center">
-          <div class="flex gap-2">
-            <button id="prevSlide" class="px-3 py-2 bg-gray-800 rounded">◀</button>
-            <button id="nextSlide" class="px-3 py-2 bg-gray-800 rounded">▶</button>
-          </div>
-          <div id="dots" class="flex gap-2"></div>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="videos" class="py-16 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center">Conheça o Programa</h2>
-      <p class="text-center text-gray-400 mt-3 max-w-2xl mx-auto">Veja em detalhe como o curso vai transformar a sua carreira.</p>
-      
-      <div class="grid md:grid-cols-2 gap-8 mt-12">
-        <div class="glass p-4 rounded-xl">
-          <div class="aspect-w-16 aspect-h-9">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-lg"></iframe>
+    <div id="video-focus-overlay" class="video-focus-overlay"></div>
+    <section id="videos" class="py-20 border-t border-gray-800 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center">Conheça o Programa em Detalhe</h2>
+        <p class="text-center text-gray-400 mt-3 max-w-2xl mx-auto">Veja em detalhe como o curso vai transformar a sua
+          carreira e forma de pensar.</p>
+        <div class="grid md:grid-cols-2 gap-8 mt-12">
+          <div class="video-card glass p-4 rounded-xl cursor-pointer group" data-video-id="dQw4w9WgXcQ">
+            <div class="relative rounded-lg overflow-hidden">
+              <img
+                src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Thumbnail do vídeo 1"
+                class="w-full aspect-video object-cover transition-transform group-hover:scale-105">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-electric-green/80 rounded-full flex items-center justify-center transition-transform group-hover:scale-110">
+                  <i data-feather="play" class="text-black ml-1"></i></div>
+              </div>
+            </div>
+            <h3 class="font-semibold mt-4">Pilar 1: Quebrando Mitos</h3>
+            <p class="text-gray-300 text-sm mt-1">Entenda a nossa metodologia prática e direta ao ponto.</p>
           </div>
-          <h3 class="font-semibold mt-4">Pilar 1: Quebrando Mitos</h3>
-          <p class="text-gray-300 text-sm mt-1">Entenda a nossa metodologia prática e direta.</p>
+          <div class="video-card glass p-4 rounded-xl cursor-pointer group" data-video-id="L_jWHffIx5E">
+            <div class="relative rounded-lg overflow-hidden"><img
+                src="https://img.youtube.com/vi/L_jWHffIx5E/hqdefault.jpg" alt="Thumbnail do vídeo 2"
+                class="w-full aspect-video object-cover transition-transform group-hover:scale-105">
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-electric-green/80 rounded-full flex items-center justify-center transition-transform group-hover:scale-110">
+                  <i data-feather="play" class="text-black ml-1"></i></div>
+              </div>
+            </div>
+            <h3 class="font-semibold mt-4">Pilar 2: Comunidade e Ecossistema</h3>
+            <p class="text-gray-300 text-sm mt-1">Veja como o networking e os projetos reais impulsionam o seu
+              crescimento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="manual-download" class="py-20 border-t border-gray-800 reveal">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        
+        <div class="flex justify-center">
+          <img src="./assets/images/manual-mockup.png" alt="Capa do Manual Programação de Alto Impacto" class="rounded-lg shadow-2xl max-w-sm w-full transform transition-transform hover:scale-105">
         </div>
 
-        <div class="glass p-4 rounded-xl">
-          <div class="aspect-w-16 aspect-h-9">
-             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-lg"></iframe>
+        <div class="text-center md:text-left">
+          <h2 class="text-3xl font-bold">
+            Baixe o Manual Gratuito: <span class="electric-green">O Seu Primeiro Passo</span>
+          </h2>
+          <p class="mt-4 text-gray-300">
+            Este guia prático e direto ao ponto foi desenhado para desmistificar os conceitos essenciais da programação. É o recurso perfeito para começar a sua jornada e entender a filosofia do nosso programa de alto impacto.
+          </p>
+          
+          <ul class="mt-6 space-y-3 text-left inline-block">
+            <li class="flex items-center gap-3">
+              <i data-feather="check-circle" class="w-5 h-5 text-electric-green"></i>
+              <span>Fundamentos da Lógica Estruturada.</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i data-feather="check-circle" class="w-5 h-5 text-electric-green"></i>
+              <span>Como transformar ideias em algoritmos.</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i data-feather="check-circle" class="w-5 h-5 text-electric-green"></i>
+              <span>Exercícios práticos para começar a codificar.</span>
+            </li>
+          </ul>
+          
+          <div class="mt-8">
+            <a href="./assets/files/manual-alto-impacto.pdf" download="Manual-Programacao-Alto-Impacto.pdf" class="bg-electric-green text-black px-8 py-4 rounded-full font-bold inline-block hover:opacity-90 transition-opacity">
+              Baixar Agora (PDF)
+            </a>
           </div>
-          <h3 class="font-semibold mt-4">Pilar 2: Comunidade e Ecossistema</h3>
-          <p class="text-gray-300 text-sm mt-1">Veja como o networking e os projetos reais funcionam.</p>
         </div>
+        
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="faq" class="py-16 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-2xl font-bold">Perguntas Frequentes</h3>
-        <div class="mt-6 space-y-4">
-          <details class="glass p-4 rounded"><summary class="font-semibold">Quanto tempo dura o curso?</summary><p class="mt-2 text-gray-300">A duração oficial será anunciada 10 dias antes do lançamento. Será um programa intensivo com projetos práticos.</p></details>
-          <details class="glass p-4 rounded"><summary class="font-semibold">Preciso ter experiência?</summary><p class="mt-2 text-gray-300">Não. O curso foi desenhado para atender todos os níveis, do iniciante ao avançado.</p></details>
-          <details class="glass p-4 rounded"><summary class="font-semibold">Como funciona a lista de espera?</summary><p class="mt-2 text-gray-300">Ao inscrever-se, receberá em primeira mão a data de lançamento, ofertas especiais e terá prioridade nas vagas.</p></details>
+    <section id="author" class="py-20 border-t border-gray-800 reveal">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 items-center">
+        <div class="md:col-span-1 flex justify-center"><img src="./assets/images/4x4.1.svg" alt="Foto de Edson Chimuco"
+            class="rounded-full w-48 h-48 md:w-56 md:h-56 object-cover border-4 border-electric-green shadow-lg"></div>
+        <div class="md:col-span-2 text-center md:text-left">
+          <h2 class="text-3xl font-bold">Sobre o Idealizador</h2>
+          <p class="text-electric-green font-semibold mt-1 text-lg">Edson Chimuco</p>
+          <p id="author-bio" class="mt-4 text-gray-300">Carregando biografia...</p>
+          <div class="flex gap-6 mt-6 justify-center md:justify-start">
+            <a href="https://www.linkedin.com/in/edson-chimuco-513389360/" aria-label="LinkedIn" class="text-gray-400 hover:text-electric-green transition-colors"><i
+                data-feather="linkedin"></i></a>
+            <a href="https://github.com/edsonchimuco" aria-label="GitHub" class="text-gray-400 hover:text-electric-green transition-colors"><i
+                data-feather="github"></i></a>
+            <a href="#" aria-label="YouTube" class="text-gray-400 hover:text-electric-green transition-colors"><i
+                data-feather="youtube"></i></a>
+          </div>
         </div>
       </div>
-      <div>
-        <h3 class="text-2xl font-bold">Depoimentos</h3>
-        <div class="mt-6 space-y-4">
-          <div class="glass p-4 rounded"><strong>João Silva</strong><p class="text-gray-300">"Um programa que promete revolucionar a forma como aprendemos a programar em Angola. Ansioso pelo lançamento!"</p></div>
-          <div class="glass p-4 rounded"><strong>Maria Fernandes</strong><p class="text-gray-300">"A abordagem prática e focada em criar um ecossistema é exatamente o que precisamos. Já estou na lista de espera!"</p></div>
+    </section>
+
+
+   <section id="faq" class="py-20 border-t border-gray-800 reveal">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold">Como podemos ajudá-lo?</h2>
+          <div class="relative mt-6 max-w-2xl mx-auto">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"><i data-feather="search"></i></span>
+            <input id="faq-search" type="text" placeholder="Pesquise em mais de 400 perguntas..." class="w-full bg-gray-900 border border-gray-700 rounded-full py-3 pl-12 pr-4 text-white outline-none focus:border-electric-green focus:ring-1 focus:ring-electric-green transition-colors">
+          </div>
+        </div>
+
+        <div id="faq-container" class="space-y-4">
+            <div id="faq-loading" class="text-center text-gray-400 py-10">
+                <p>A carregar as perguntas...</p>
+            </div>
+        </div>
+        
+        <div id="faq-no-results" class="hidden text-center text-gray-400 py-10">
+          <p>Nenhum resultado encontrado para a sua pesquisa.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="py-12 border-t border-gray-800">
-    <div class="max-w-6xl mx-auto px-6 text-gray-400">
-      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-        <div>
-          <h4 class="font-bold electric-green">Programa de Alto Impacto</h4>
-          <p class="text-sm">Transformando Angola através do conhecimento em programação.</p>
-        </div>
-        <div class="mt-4 md:mt-0">
-          <p class="text-sm">contato@altoimpacto.ao • +244 123 456 789</p>
-        </div>
+    <div class="max-w-6xl mx-auto px-6 text-gray-400 text-center">
+      <h4 class="font-bold text-lg electric-green">Programação de Alto Impacto</h4>
+      <p class="text-sm mt-1">Transformando Angola através do conhecimento em programação.</p>
+      <div class="mt-6 flex justify-center gap-6">
+        <button class="modal-trigger text-sm hover:text-electric-green transition-colors"
+          data-url="./privacy.html">Política de Privacidade</button>
+        <button class="modal-trigger text-sm hover:text-electric-green transition-colors" data-url="./terms.html">Termos
+          de Uso</button>
       </div>
+      <p class="text-xs mt-6 text-gray-500">© 2025 Edson Chimuco & Programação Alto Impacto. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-    <div id="leadModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-    <div class="glass p-8 rounded-xl max-w-md w-full relative" data-aos="fade-up">
-      <button id="closeLeadModal" class="absolute top-4 right-4 text-gray-400">✕</button>
+  <div id="iframeModal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-btn" aria-label="Fechar modal">×</button>
+      <iframe src="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div id="leadModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+    <div class="glass p-8 rounded-xl max-w-md w-full relative reveal">
+      <button id="closeLeadModal"
+        class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">✕</button>
       <h3 class="font-bold text-2xl electric-green">Antes de ir...</h3>
-      <p class="text-gray-300 mt-2">Parece que não encontrou o que procurava. Deixe o seu contacto e um especialista da nossa equipa irá tirar todas as suas dúvidas, sem compromisso!</p>
+      <p class="text-gray-300 mt-2">Deixe o seu contacto e um especialista irá tirar as suas dúvidas, sem compromisso!
+      </p>
       <form id="leadForm" class="space-y-3 mt-6">
-        <input name="contacto" required placeholder="O seu WhatsApp ou Email*" class="w-full px-3 py-2 rounded bg-gray-800" />
-        <textarea name="duvida" placeholder="Qual é a sua principal dúvida? (Opcional)" rows="2" class="w-full px-3 py-2 rounded bg-gray-800"></textarea>
-        <button type="submit" class="w-full bg-electric-green text-black px-4 py-2 rounded font-bold">Quero Receber Ajuda</button>
+        <input name="contacto" required placeholder="O seu WhatsApp ou Email*"
+          class="w-full px-3 py-2 rounded bg-gray-800" />
+        <textarea name="duvida" placeholder="Qual é a sua principal dúvida? (Opcional)" rows="2"
+          class="w-full px-3 py-2 rounded bg-gray-800"></textarea>
+        <button type="submit" class="w-full bg-electric-green text-black px-4 py-2 rounded font-bold">Quero Receber
+          Ajuda</button>
       </form>
     </div>
   </div>
 
-  <div id="chatModal" class="fixed bottom-6 right-6 z-50 w-full max-w-md hidden">
-    <div class="glass rounded-t-lg overflow-hidden shadow-xl">
-      <div class="flex items-center justify-between px-4 py-3 bg-gray-800">
-        <strong>Qualificação — Assistente</strong>
-        <button id="closeChat" class="px-2 py-1 text-gray-300">✕</button>
-      </div>
-      <div id="chatBody" class="p-4 max-h-72 overflow-y-auto">
-        <div class="text-gray-300">Olá! Vamos fazer algumas perguntas rápidas para qualificar a sua candidatura.</div>
-      </div>
-      <div class="p-3 border-t border-gray-700 bg-gray-900">
-        <div id="chatOptions" class="grid grid-cols-2 gap-2 mb-2 hidden"></div>
-        <div id="chatInputWrap" class="flex gap-2">
-          <input id="chatInput" type="text" placeholder="Digite aqui..." class="flex-1 px-3 py-2 rounded bg-gray-800" />
-          <button id="chatSend" class="px-3 py-2 bg-electric-green text-black rounded">Enviar</button>
+  <div id="chat-widget-container" class="fixed bottom-6 right-6 z-50">
+    <button id="openChat"
+      class="bg-electric-green text-black w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+      <i data-feather="message-square" class="w-8 h-8"></i>
+    </button>
+    <div id="chatModal" class="hidden absolute bottom-0 right-0 w-80 md:w-96 mb-20">
+      <div class="glass rounded-lg overflow-hidden shadow-xl border border-gray-700">
+        <div class="flex items-center justify-between px-4 py-3 bg-gray-800">
+          <strong class="text-white">Assistente Virtual</strong>
+          <button id="closeChat" class="text-gray-300 hover:text-white">✕</button>
+        </div>
+        <div id="chatBody" class="p-4 h-72 overflow-y-auto"></div>
+        <div class="p-3 border-t border-gray-700 bg-gray-900/50">
+          <div id="chatOptions" class="grid grid-cols-2 gap-2 mb-2"></div>
+          <div id="chatInputWrap" class="flex gap-2 hidden">
+            <input id="chatInput" type="text" placeholder="Digite aqui..."
+              class="flex-1 px-3 py-2 rounded bg-gray-800 outline-none focus:border-electric-green border border-transparent" />
+            <button id="chatSend" class="px-4 py-2 bg-electric-green text-black rounded font-bold">Enviar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-   <script src="./assets/js/main.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,169 @@
+/* Ficheiro: /style.css */
+
+/* --- Importação de Fontes e Variáveis Globais --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --green: #00ff9d;
+    --dark-900: #0b0b0b;
+    --glass: rgba(255, 255, 255, 0.04);
+}
+
+/* --- Estilos Base do Body --- */
+body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+    background: #070707;
+    color: #f8fafc;
+    overflow-x: hidden; /* Previne scroll horizontal indesejado */
+}
+
+/* --- Classes Utilitárias Globais --- */
+.electric-green { color: var(--green); }
+.bg-electric-green { background: var(--green); }
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* --- Animações Globais (Intersection Observer) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Estilos do Carrossel --- */
+.carousel-track { 
+    cursor: grab; 
+}
+.carousel-track:active { 
+    cursor: grabbing; 
+}
+
+/* --- Estilos dos Modais (Iframe, Lead, Chat) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    height: 80vh;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-content iframe {
+    flex-grow: 1;
+    border: none;
+    border-radius: 8px;
+    background: #fff; /* Fundo branco para os iframes de política/termos */
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: var(--green);
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+}
+
+
+/* --- Estilos do Scrollbar Personalizado (para o Iframe) --- */
+/* Funciona em navegadores baseados em WebKit (Chrome, Safari, Edge) */
+.modal-content iframe::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-content iframe::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+.modal-content iframe::-webkit-scrollbar-thumb {
+    background-color: var(--green);
+    border-radius: 20px;
+    border: 3px solid #e0e0e0;
+}
+
+
+/* --- Foco de Vídeo (Dim Overlay) --- */
+.video-focus-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 60; /* Acima de tudo, exceto modais */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.video-focus-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* --- Estilos da Nova Secção FAQ --- */
+
+/* Remove o marcador de triângulo padrão do elemento <details> */
+summary {
+    list-style: none; /* Para Firefox */
+}
+summary::-webkit-details-marker {
+    display: none; /* Para Chrome, Safari, etc. */
+}
+
+/* Gira o ícone de seta quando a categoria está aberta */
+details[open] summary .chevron-icon {
+    transform: rotate(180deg);
+}
