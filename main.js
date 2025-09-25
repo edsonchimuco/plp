@@ -13,7 +13,7 @@ import { initFaq } from './components/faq/faq.js';
 // --- 2. EVENT LISTENER PRINCIPAL ---
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 3. CONFIGURAÇÕES GLOBAIS ---
+   // --- 3. CONFIGURAÇÕES GLOBAIS ---
     const CONTENT_URL = "https://script.google.com/macros/s/AKfycbzIH2rrJbeqgDbgd_SYznbqzKShrPbs7MpM48kgnjz83_g5X_C-Qfc-8hjss0NTbTIb8g/exec";
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIH2rrJbeqgDbgd_SYznbqzKShrPbs7MpM48kgnjz83_g5X_C-Qfc-8hjss0NTbTIb8g/exec";
     const LEAD_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIH2rrJbeqgDbgd_SYznbqzKShrPbs7MpM48kgnjz83_g5X_C-Qfc-8hjss0NTbTIb8g/exec";
