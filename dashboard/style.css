@@ -1,0 +1,19 @@
+/* Ficheiro: style.css */
+
+/* Define a cor personalizada para ser usada com as classes do Tailwind */
+.text-electric-green {
+    color: #00ff9d;
+}
+.bg-electric-green {
+    background-color: #00ff9d;
+}
+.focus\:ring-electric-green:focus {
+    --tw-ring-color: #00ff9d;
+}
+
+/* Estilo para a fonte Inter (opcional, mas recomendado para consistência) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
