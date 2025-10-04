@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | Programa de Alto Impacto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        :root {
+            --electric-green: #00ff88;
+        }
+        .bg-gray-900-custom {
+            background-color: #070707;
+        }
+        .electric-green {
+            color: var(--electric-green);
+        }
+        .bg-electric-green {
+            background-color: var(--electric-green);
+        }
+        .border-electric-green {
+            border-color: var(--electric-green);
+        }
+        .shadow-glow {
+            box-shadow: 0 0 15px 5px rgba(0, 255, 136, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-900-custom text-white antialiased">
+
+    <div class="flex flex-col items-center justify-center min-h-screen p-6">
+        
+        <header class="text-center mb-12">
+            <img src="../assets/images/logo.svg" alt="Logo Programa de Alto Impacto" class="w-24 h-24 mx-auto mb-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold">
+                Programa de <span class="electric-green">Alto Impacto</span>
+            </h1>
+            <p class="text-gray-400 mt-2">O seu ambiente de aprendizagem exclusivo.</p>
+        </header>
+
+        <main id="download-card" class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 max-w-lg w-full text-center transform transition-all duration-500 scale-95 opacity-0">
+            
+            <div id="loading-state" class="flex flex-col items-center">
+                <svg class="animate-spin h-10 w-10 electric-green" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="mt-4 text-gray-300">A identificar o seu dispositivo...</p>
+            </div>
+
+            <div id="download-content" class="hidden">
+                <div class="mb-6">
+                    <i id="device-icon" data-feather="smartphone" class="w-16 h-16 electric-green mx-auto"></i>
+                </div>
+                <h2 id="device-title" class="text-2xl font-bold mb-2">Preparando o seu Download</h2>
+                <p id="device-description" class="text-gray-400 mb-8">O download será otimizado para a sua plataforma.</p>
+                
+                <a id="download-button" href="#" class="bg-electric-green text-black font-bold text-lg px-8 py-4 rounded-full inline-flex items-center gap-3 hover:opacity-90 transition-opacity transform hover:scale-105 shadow-lg shadow-glow">
+                    <i data-feather="download-cloud" class="w-6 h-6"></i>
+                    <span id="button-text">Fazer Download</span>
+                </a>
+                
+                <p class="text-xs text-gray-500 mt-6">
+                    Ao fazer o download, você concorda com os nossos <a href="#" class="underline hover:text-electric-green">Termos de Uso</a>.
+                </p>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>&copy; 2025 Edson Chimuco. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
